@@ -1,0 +1,78 @@
+/* eslint-disable no-script-url */
+import queryString from 'query-string';
+export const criteriaToArray = (where) => {
+    if (!where.length) {
+        return [];
+    }
+    const searchArguments = [];
+    for (const criteria of where) {
+        const { name, type, value } = criteria;
+        if (type === 'exists') {
+            // Defaults to true so criteria stored before exists became selectable keep working
+            searchArguments.push(`exists[${name}]=${value === '' ? 'true' : value}`);
+        }
+        else if (type === 'in') {
+            searchArguments.push(`${name}[]=${value}`);
+        }
+        else if (type !== '') {
+            searchArguments.push(`${name}[${type}]=${value}`);
+        }
+        else {
+            searchArguments.push(`${name}=${value}`);
+        }
+    }
+    searchArguments.sort((a, b) => {
+        if (a.indexOf('_') >= 0 && b.indexOf('_') < 0)
+            return 1;
+        if (b.indexOf('_') >= 0 && a.indexOf('_') < 0)
+            return -1;
+        return a < b ? -1 : a > b ? 1 : 0;
+    });
+    return searchArguments;
+};
+export const queryStringToCriteria = () => {
+    return stringToCriteria(location.search);
+};
+export const stringToCriteria = (uri = '') => {
+    const criteria = [];
+    const querystring = queryString.parse(uri);
+    for (const idx in querystring) {
+        const value = querystring[idx];
+        const matches = idx.match(/([^[]+)\[?([^\]]*)\]?/);
+        if (!matches) {
+            continue;
+        }
+        if (Array.isArray(value)) {
+            for (const val of value) {
+                criteria.push({
+                    name: matches[1],
+                    type: 'in',
+                    value: val,
+                });
+            }
+            continue;
+        }
+        if (matches[0] === `${matches[1]}[]`) {
+            criteria.push({
+                name: matches[1],
+                type: 'in',
+                value: value,
+            });
+            continue;
+        }
+        if (matches[1] === 'exists') {
+            criteria.push({
+                name: matches[2],
+                type: 'exists',
+                value,
+            });
+            continue;
+        }
+        criteria.push({
+            name: matches[1],
+            type: matches[2],
+            value,
+        });
+    }
+    return criteria;
+};

@@ -1,0 +1,21 @@
+.MuiPaper-root {
+  border-radius: var(--radius-md);
+}
+
+.MuiPaper-root.MuiMenu-paper {
+  .MuiMenuItem-root,
+  .MuiButtonBase-root {
+    transition: all 100ms ease-in;
+    &:hover {
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+    }
+  }
+
+  .Mui-selected {
+    background-color: rgba(var(--color-primary-rgb), 0.15);
+
+    &:hover {
+      background-color: rgba(var(--color-primary-rgb), 0.25);
+    }
+  }
+}

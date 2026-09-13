@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { SvgIcon } from '@mui/material';
+export default function greaterThanEqual(props) {
+    return (_jsxs(SvgIcon, Object.assign({}, props, { children: [_jsx("path", { d: 'M4.188 6.09V3.04l15.65 5.65v2.882l-15.65 5.652v-3.052l11.78-4.028L4.188 6.09z' }), _jsx("path", { d: 'M16.137 13.82l.127-.052 3.548-1.34v2.881l-15.65 5.652v-3.052l11.78-4.028z' })] })));
+}

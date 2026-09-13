@@ -1,0 +1,1 @@
+export declare const StyledSwitchFormControl: import("@emotion/styled").StyledComponent<import("./SwitchFormControl").StyledSwitchFormControlProps & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme>, {}, {}>;

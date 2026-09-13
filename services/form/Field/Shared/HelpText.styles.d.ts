@@ -1,0 +1,1 @@
+export declare const StyledHelpTextTooltip: import("@emotion/styled").StyledComponent<import("@mui/material").TooltipProps & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme>, {}, {}>;

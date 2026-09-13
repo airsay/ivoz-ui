@@ -1,0 +1,1 @@
+export declare const StyledDynamicAutocomplete: import("@emotion/styled").StyledComponent<import("./DynamicAutocomplete").DynamicAutocompleteProps & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme>, {}, {}>;

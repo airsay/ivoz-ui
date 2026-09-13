@@ -1,0 +1,34 @@
+import { FilterActionTypes, StateMapper } from 'easy-peasy';
+import StoreContainer from './StoreContainer';
+import { AuthStore } from './auth';
+import { SpecStore } from './apiSpec';
+import { ApiStore } from './api';
+import { RouteStore } from './route';
+import { RoutesStore } from './routes';
+import { ListStore } from './list';
+import { FlashMsgStore } from './flashMsg';
+import { FormStore } from './form';
+import { MenuStore } from './menu';
+import { ThemeStore } from './theme';
+import { EntitiesStore } from './entities';
+import { LanguagesStore } from './i18n';
+import { AboutInfoStore } from './aboutInfo';
+export interface IvozStore {
+    auth: AuthStore;
+    spec: SpecStore;
+    api: ApiStore;
+    route: RouteStore;
+    routes: RoutesStore;
+    list: ListStore;
+    flashMsg: FlashMsgStore;
+    form: FormStore;
+    menu: MenuStore;
+    entities: EntitiesStore;
+    i18n: LanguagesStore;
+    theme: ThemeStore;
+    aboutInfo: AboutInfoStore;
+}
+export declare type IvozStoreState = StateMapper<FilterActionTypes<IvozStore>>;
+export declare const storeModel: IvozStore;
+declare const useStoreActions: <Result>(mapActions: (actions: import("easy-peasy").Actions<IvozStore>) => Result) => Result, useStoreState: <Result>(mapState: (state: StateMapper<FilterActionTypes<IvozStore>>) => Result, equalityFn?: ((prev: Result, next: Result) => boolean) | undefined) => Result, useStoreDispatch: () => import("easy-peasy").Dispatch<IvozStore, import("redux").AnyAction>, useStore: () => import("easy-peasy").Store<IvozStore, import("easy-peasy").EasyPeasyConfig<undefined, {}>>;
+export { StoreContainer, useStoreActions, useStoreState, useStoreDispatch, useStore, };

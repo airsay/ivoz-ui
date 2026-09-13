@@ -1,0 +1,1 @@
+export declare const StyledAutocomplete: import("@emotion/styled").StyledComponent<import("./Autocomplete").AutocompleteProps & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme>, {}, {}>;
